@@ -1,37 +1,25 @@
-# Code Samples
+package com.codesamples;
 
-## Remove Duplicates from a Sorted List
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
-This is a medium level question from [LeetCode](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
-
-```
-static ListNode deleteDuplicates(ListNode head) {
-		ListNode current = head;
-		ListNode dummy = new ListNode(0);
-		dummy.next = head;
-		ListNode previous = dummy;
-
-		while (current != null && current.next != null) {
-			if (current.val == current.next.val) {
-				while (current.next != null && current.val == current.next.val) {
-					current = current.next;
-				}
-				previous.next = current.next;
-			} else {
-				previous = current;
-			}
-			current = current.next;
-		}
-		return dummy.next;
+/**
+ * Solution to
+ * https://leetcode.com/problems/keys-and-rooms/
+ * 
+ * Output from LeetCode:
+ * 
+ * Runtime: 9 ms, faster than 23.07% of Java online submissions for Keys and Rooms.
+ * Memory Usage: 41.9 MB, less than 100.00% of Java online submissions for Keys and Rooms.
+ */
+public class KeysAndRooms {
+	
+	//Default Constructor
+	public KeysAndRooms() {
 	}
-
-```
-[View full implementation](https://github.com/royalghost/code_samples/blob/develop/RemoveDuplicatesFromSortedList.java)
-
-## Keys and Rooms
-Question - https://leetcode.com/problems/keys-and-rooms/
-
-```
+	
 	public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         //This is a depth first search problem 
         //Solved by using a Stack and keeping track of each node visited or not in order to avoid infinite loop
@@ -60,5 +48,18 @@ Question - https://leetcode.com/problems/keys-and-rooms/
         
         return true;
     }
-```
-[View full implementation](https://github.com/royalghost/code_samples/blob/develop/KeysAndRooms.java)
+	
+	public static void main(String[] args) {
+		List<List<Integer>> input = new ArrayList<>();
+		//	[[1],[2],[3],[]]
+		input.add(Arrays.asList(1));
+		input.add(Arrays.asList(2));
+		input.add(Arrays.asList(3));
+		input.add(Arrays.asList());
+
+		KeysAndRooms keysAndRooms = new KeysAndRooms();
+		boolean result = keysAndRooms.canVisitAllRooms(input);
+		System.out.println(result);
+	}
+
+}
